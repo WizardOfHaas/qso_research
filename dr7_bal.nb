@@ -1,0 +1,3966 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    144593,       3957]
+NotebookOptionsPosition[    142978,       3904]
+NotebookOutlinePosition[    143314,       3919]
+CellTagsIndexPosition[    143271,       3916]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"data", "=", 
+   RowBox[{"Import", "[", "\"\<../exports/dr7_bal.csv\>\"", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"totalData", "=", 
+   RowBox[{"Import", "[", "\"\<../exports/dr7_all.csv\>\"", "]"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.677685595258667*^9, 3.677685636373447*^9}, 
+   3.677685675786903*^9, {3.677770913275277*^9, 3.67777093891293*^9}, 
+   3.677771374471888*^9}],
+
+Cell[BoxData[
+ RowBox[{"Histogram", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"totalData", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "4"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "4"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+    "}"}], ",", "10"}], "]"}]], "Input",
+ CellChangeTimes->{{3.677685699177456*^9, 3.6776857034248734`*^9}, {
+  3.677685738394112*^9, 3.677685739399314*^9}, {3.6776858849642572`*^9, 
+  3.6776859164084377`*^9}, {3.677771563781698*^9, 3.677771585305532*^9}}],
+
+Cell[BoxData["|"], "Input",
+ CellChangeTimes->{{3.677778027157032*^9, 3.6777780271649733`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"(*", 
+  RowBox[{"ListPlot", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"totalData", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"data", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"2", ",", "3"}], "}"}]}], "]"}], "]"}]}], 
+     "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"AxesLabel", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"\"\<RA\>\"", ",", "\"\<Dec\>\""}], "}"}]}]}], 
+   "\[IndentingNewLine]", "]"}], "*)"}]], "Input",
+ CellChangeTimes->{{3.677685952643057*^9, 3.6776859897546043`*^9}, {
+  3.677771354310425*^9, 3.6777713673973494`*^9}, {3.6777714703055267`*^9, 
+  3.677771476634247*^9}, {3.6777763501351633`*^9, 3.6777763596756163`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Histogram", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"data", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "139"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+     
+     RowBox[{"totalData", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "139"}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+    "}"}], ",", "\[IndentingNewLine]", "30", ",", "\[IndentingNewLine]", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<BH Mass\>\""}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"PlotRange", "\[Rule]", "All"}]}], "\[IndentingNewLine]", 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"BHMasses", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<\>\"", ",", "\[IndentingNewLine]", "\"\<Mean Mass\>\"", ",", 
+       "\[IndentingNewLine]", "\"\<Standard Deviation\>\""}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"\"\<Normalized Sample\>\"", ",", "\[IndentingNewLine]", 
+       RowBox[{"Mean", "[", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "139"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"StandardDeviation", "[", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", " ", "139"}], "]"}], "]"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"\"\<Full DR7 Sample\>\"", ",", "\[IndentingNewLine]", 
+       RowBox[{"Mean", "[", 
+        RowBox[{"totalData", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "139"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"StandardDeviation", "[", 
+        RowBox[{"totalData", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "139"}], "]"}], "]"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"BHMasses", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.6776863874262133`*^9, 3.677686388024337*^9}, {
+   3.677686461757825*^9, 3.677686465726429*^9}, {3.677688440200688*^9, 
+   3.6776884415934753`*^9}, {3.6776887946166077`*^9, 3.677688813253849*^9}, {
+   3.677689387783813*^9, 3.6776893930591516`*^9}, {3.6776915435258904`*^9, 
+   3.677691543568097*^9}, {3.67769168279699*^9, 3.677691687786626*^9}, {
+   3.67769194026797*^9, 3.677691978816601*^9}, {3.677771608064093*^9, 
+   3.6777717170402184`*^9}, {3.677771882905916*^9, 3.677771993522903*^9}, {
+   3.6777745992434*^9, 3.677774628807077*^9}, {3.677774672305168*^9, 
+   3.677774729245948*^9}, 3.677774954685301*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.5389999999999999], Thickness[Small]}], {{}, 
+     {RGBColor[0.97858, 0.678934, 0.157834], Opacity[0.5], EdgeForm[{Opacity[
+      0.5389999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{8., 0.}, {8.5, 2}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{257.1808838375048, 271.1943032687019}, {
+           95.65709236948477, 96.1667382063951}}],
+         StatusArea[#, 2]& ,
+         TagBoxNote->"2"],
+        StyleBox["2", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[2, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{8.5, 0.}, {9., 10}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{270.6943032687019, 284.707722699899}, {
+           95.6185090218435, 96.1667382063951}}],
+         StatusArea[#, 10]& ,
+         TagBoxNote->"10"],
+        StyleBox["10", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[10, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{9., 0.}, {9.5, 19}, "RoundingRadius" -> 0]},
+          ImageSizeCache->{{284.207722699899, 298.22114213109614`}, {
+           95.57510275574705, 96.1667382063951}}],
+         StatusArea[#, 19]& ,
+         TagBoxNote->"19"],
+        StyleBox["19", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[19, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{9.5, 0.}, {10., 19}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{297.72114213109614`, 311.73456156229327`}, {
+           95.57510275574705, 96.1667382063951}}],
+         StatusArea[#, 19]& ,
+         TagBoxNote->"19"],
+        StyleBox["19", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[19, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{10., 0.}, {10.5, 1}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{311.23456156229327`, 325.2479809934904}, {
+           95.66191528793993, 96.1667382063951}}],
+         StatusArea[#, 1]& ,
+         TagBoxNote->"1"],
+        StyleBox["1", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[1, {}], "Tooltip"]& ]}, {}, {}}, {{}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], Opacity[0.5], EdgeForm[{Opacity[
+      0.5389999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{0., 0.}, {0.5, 1037}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{40.96617293835068, 54.97959236954781}, {
+           90.66537176839431, 96.1667382063951}}],
+         StatusArea[#, 1037]& ,
+         TagBoxNote->"1037"],
+        StyleBox["1037", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[1037, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{6.5, 0.}, {7., 3}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{216.64062554391336`, 230.65404497511048`}, {
+           95.65226945102961, 96.1667382063951}}],
+         StatusArea[#, 3]& ,
+         TagBoxNote->"3"],
+        StyleBox["3", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[3, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{7., 0.}, {7.5, 473}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{230.15404497511048`, 244.16746440630766`}, {
+           93.38549777710448, 96.1667382063951}}],
+         StatusArea[#, 473]& ,
+         TagBoxNote->"473"],
+        StyleBox["473", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[473, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{7.5, 0.}, {8., 3693}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{243.66746440630766`, 257.6808838375048}, {
+           77.85570035148967, 96.1667382063951}}],
+         StatusArea[#, 3693]& ,
+         TagBoxNote->"3693"],
+        StyleBox["3693", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[3693, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{8., 0.}, {8.5, 13740}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{257.1808838375048, 271.1943032687019}, {
+           29.399838632498387`, 96.1667382063951}}],
+         StatusArea[#, 13740]& ,
+         TagBoxNote->"13740"],
+        StyleBox["13740", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[13740, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{8.5, 0.}, {9., 34812}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{270.6943032687019, 
+           284.707722699899}, {-72.22869905463052, 96.1667382063951}}],
+         StatusArea[#, 34812]& ,
+         TagBoxNote->"34812"],
+        StyleBox["34812", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[34812, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{9., 0.}, {9.5, 38584}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{284.207722699899, 
+           298.22114213109614`}, {-90.4207474674936, 96.1667382063951}}],
+         StatusArea[#, 38584]& ,
+         TagBoxNote->"38584"],
+        StyleBox["38584", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[38584, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{9.5, 0.}, {10., 12273}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{297.72114213109614`, 311.73456156229327`}, {
+           36.47506000621793, 96.1667382063951}}],
+         StatusArea[#, 12273]& ,
+         TagBoxNote->"12273"],
+        StyleBox["12273", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[12273, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{10., 0.}, {10.5, 1101}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{311.23456156229327`, 325.2479809934904}, {
+           90.35670498726407, 96.1667382063951}}],
+         StatusArea[#, 1101]& ,
+         TagBoxNote->"1101"],
+        StyleBox["1101", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[1101, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{10.5, 0.}, {11., 61}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{324.7479809934904, 338.7614004246875}, {
+           95.37254018063034, 96.1667382063951}}],
+         StatusArea[#, 61]& ,
+         TagBoxNote->"61"],
+        StyleBox["61", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[61, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{11., 0.}, {11.5, 6}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{338.2614004246875, 352.2748198558847}, {
+           95.63780069566414, 96.1667382063951}}],
+         StatusArea[#, 6]& ,
+         TagBoxNote->"6"],
+        StyleBox["6", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[6, {}], 
+        "Tooltip"]& ]}, {}, {}}}, {{{{}, {}, {}, {}, {}}, {}}, {{{}, {}, {}, \
+{}, {}, {}, {}, {}, {}, {}, {}}, {}}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{-0.23, 0.},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotLabel->FormBox["\"BH Mass\"", TraditionalForm],
+  PlotRange->{{0., 11.5}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.677686388676239*^9, 3.677686466033619*^9, 3.6776884420090103`*^9, {
+   3.677688795707535*^9, 3.677688813524859*^9}, {3.677689390097293*^9, 
+   3.677689393453492*^9}, 3.677691544326689*^9, 3.677691688119109*^9, {
+   3.677691968188488*^9, 3.67769197911078*^9}, 3.6777716670126667`*^9, 
+   3.6777717178969793`*^9, 3.6777718834649887`*^9, {3.6777719203710814`*^9, 
+   3.677771952832918*^9}, 3.6777719947586813`*^9, {3.677774619039729*^9, 
+   3.677774632035974*^9}, {3.677774678651209*^9, 3.677774730663761*^9}, 
+   3.677774955998581*^9}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"Mean Mass\"\>", "\<\"Standard Deviation\"\>"},
+    {"\<\"Normalized Sample\"\>", "9.326619206270404`", 
+     "0.39371565422154753`"},
+    {"\<\"Full DR7 Sample\"\>", "8.872517348747989`", "1.0123215275047759`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.677686388676239*^9, 3.677686466033619*^9, 3.6776884420090103`*^9, {
+   3.677688795707535*^9, 3.677688813524859*^9}, {3.677689390097293*^9, 
+   3.677689393453492*^9}, 3.677691544326689*^9, 3.677691688119109*^9, {
+   3.677691968188488*^9, 3.67769197911078*^9}, 3.6777716670126667`*^9, 
+   3.6777717178969793`*^9, 3.6777718834649887`*^9, {3.6777719203710814`*^9, 
+   3.677771952832918*^9}, 3.6777719947586813`*^9, {3.677774619039729*^9, 
+   3.677774632035974*^9}, {3.677774678651209*^9, 3.677774730663761*^9}, 
+   3.677774956051285*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Histogram", "[", 
+  RowBox[{
+   RowBox[{"data", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "141"}], "]"}], "]"}], ",", "20", ",", " ", 
+   RowBox[{"PlotLabel", "\[Rule]", "\"\<Eddington Ratio\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"EddingtonRatios", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{
+      "\"\<\>\"", ",", "\[IndentingNewLine]", "\"\<Mean\>\"", ",", 
+       "\[IndentingNewLine]", "\"\<Standard Deviation\>\""}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"\"\<Normalized Sample\>\"", ",", "\[IndentingNewLine]", 
+       RowBox[{"Mean", "[", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "141"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"StandardDeviation", "[", 
+        RowBox[{"data", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", " ", "141"}], "]"}], "]"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}], ",", 
+     RowBox[{"{", "\[IndentingNewLine]", 
+      RowBox[{"\"\<Full DR7 Sample\>\"", ",", "\[IndentingNewLine]", 
+       RowBox[{"Mean", "[", 
+        RowBox[{"totalData", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "141"}], "]"}], "]"}], "]"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"StandardDeviation", "[", 
+        RowBox[{"totalData", "[", 
+         RowBox[{"[", 
+          RowBox[{"All", ",", "141"}], "]"}], "]"}], "]"}]}], 
+      "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"EddingtonRatios", "//", "TableForm"}]}], "Input",
+ CellChangeTimes->{{3.677691677386032*^9, 3.6776916962117453`*^9}, {
+  3.6776919842940693`*^9, 3.6776919895642157`*^9}, {3.6777720193457108`*^9, 
+  3.677772074643155*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.5599999999999999], Thickness[Small]}], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.5599999999999999], Thickness[Small]}], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-1.3, 0}, {-1.2, 2}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{21.348039215686214`, 40.17592592592587}, {
+          60.88453752878433, 100.88834606827285`}}],
+        StatusArea[#, 2]& ,
+        TagBoxNote->"2"],
+       StyleBox["2", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[2, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-1.2, 0}, {-1.1, 1}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{39.67592592592587, 58.50381263616549}, {
+          80.6364417985286, 100.88834606827285`}}],
+        StatusArea[#, 1]& ,
+        TagBoxNote->"1"],
+       StyleBox["1", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[1, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-1.1, 0}, {-1., 2}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{58.00381263616549, 76.83169934640517}, {
+          60.88453752878433, 100.88834606827285`}}],
+        StatusArea[#, 2]& ,
+        TagBoxNote->"2"],
+       StyleBox["2", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[2, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.9, 0}, {-0.8, 5}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{94.65958605664483, 113.48747276688448`}, {
+          1.6288247195515453`, 100.88834606827285`}}],
+        StatusArea[#, 5]& ,
+        TagBoxNote->"5"],
+       StyleBox["5", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[5, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.8, 0}, {-0.7, 2}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{112.98747276688448`, 131.81535947712413`}, {
+          60.88453752878433, 100.88834606827285`}}],
+        StatusArea[#, 2]& ,
+        TagBoxNote->"2"],
+       StyleBox["2", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[2, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.7, 0}, {-0.6, 8}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{131.31535947712413`, 
+          150.1432461873638}, {-57.626888089681245`, 100.88834606827285`}}],
+        StatusArea[#, 8]& ,
+        TagBoxNote->"8"],
+       StyleBox["8", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[8, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.6, 0}, {-0.5, 10}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{149.6432461873638, 
+          168.47113289760344`}, {-97.13069662916976, 100.88834606827285`}}],
+        StatusArea[#, 10]& ,
+        TagBoxNote->"10"],
+       StyleBox["10", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[10, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.5, 0}, {-0.4, 7}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{167.97113289760344`, 
+          186.7990196078431}, {-37.87498381993697, 100.88834606827285`}}],
+        StatusArea[#, 7]& ,
+        TagBoxNote->"7"],
+       StyleBox["7", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[7, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.3, 0}, {-0.2, 4}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{204.62690631808275`, 223.4547930283224}, {
+          21.380728989295804`, 100.88834606827285`}}],
+        StatusArea[#, 4]& ,
+        TagBoxNote->"4"],
+       StyleBox["4", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[4, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.2, 0}, {-0.1, 1}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{222.9547930283224, 241.78267973856205`}, {
+          80.6364417985286, 100.88834606827285`}}],
+        StatusArea[#, 1]& ,
+        TagBoxNote->"1"],
+       StyleBox["1", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[1, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{-0.1, 0}, {0., 3}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{241.28267973856205`, 260.1105664488017}, {
+          41.13263325904006, 100.88834606827285`}}],
+        StatusArea[#, 3]& ,
+        TagBoxNote->"3"],
+       StyleBox["3", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[3, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0., 0}, {0.1, 3}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{259.6105664488017, 278.4384531590414}, {
+          41.13263325904006, 100.88834606827285`}}],
+        StatusArea[#, 3]& ,
+        TagBoxNote->"3"],
+       StyleBox["3", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[3, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0.1, 0}, {0.2, 1}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{277.9384531590414, 296.766339869281}, {
+          80.6364417985286, 100.88834606827285`}}],
+        StatusArea[#, 1]& ,
+        TagBoxNote->"1"],
+       StyleBox["1", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[1, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0.2, 0}, {0.3, 1}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{296.266339869281, 315.09422657952064`}, {
+          80.6364417985286, 100.88834606827285`}}],
+        StatusArea[#, 1]& ,
+        TagBoxNote->"1"],
+       StyleBox["1", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[1, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0.4, 0}, {0.5, 1}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{332.9221132897603, 351.75}, {80.6364417985286, 
+          100.88834606827285`}}],
+        StatusArea[#, 1]& ,
+        TagBoxNote->"1"],
+       StyleBox["1", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[1, {}], 
+       "Tooltip"]& ]}, {}, {}}, {{}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, \
+{}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{-1.336, 0},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotLabel->FormBox["\"Eddington Ratio\"", TraditionalForm],
+  PlotRange->{{-1.3, 0.5}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.6776916795009003`*^9, 3.677691696923809*^9}, 
+   3.6776919901502743`*^9, {3.677772060373225*^9, 3.677772075009452*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"Mean\"\>", "\<\"Standard Deviation\"\>"},
+    {"\<\"Normalized Sample\"\>", 
+     RowBox[{"-", "0.5054307720094542`"}], "0.3598582679039828`"},
+    {"\<\"Full DR7 Sample\"\>", 
+     RowBox[{"-", "10.554911937482833`"}], "98.35109542253291`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{{3.6776916795009003`*^9, 3.677691696923809*^9}, 
+   3.6776919901502743`*^9, {3.677772060373225*^9, 3.677772075068136*^9}}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"meanData", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Mean", "[", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "i"}], "]"}], "]"}], "]"}], "//", "N"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "2", ",", " ", "142"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"stdDev", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StandardDeviation", "[", 
+       RowBox[{"data", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "i"}], "]"}], "]"}], "]"}], "//", "N"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "2", ",", " ", "142"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"cv", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"meanData", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "\[NotEqual]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"stdDev", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "/", 
+        RowBox[{"meanData", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", "\"\<NaN\>\""}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "141"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"labels", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{"i", ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "2", ",", "142"}], "}"}]}], "]"}]}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.677692077973297*^9, 3.677692154891881*^9}, {
+  3.677692192018537*^9, 3.6776922088058243`*^9}, {3.677692456833129*^9, 
+  3.677692492406426*^9}, {3.6776928668383217`*^9, 3.6776929114240217`*^9}, {
+  3.677693010715672*^9, 3.6776930164919653`*^9}, {3.67769327276306*^9, 
+  3.677693275132514*^9}, {3.677693484490631*^9, 3.6776934860081167`*^9}, {
+  3.677693557940404*^9, 3.6776935633299007`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"meanTotalData", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Mean", "[", 
+       RowBox[{"totalData", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "i"}], "]"}], "]"}], "]"}], "//", "N"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "2", ",", " ", "142"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"totalStdDev", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"StandardDeviation", "[", 
+       RowBox[{"totalData", "[", 
+        RowBox[{"[", 
+         RowBox[{"All", ",", "i"}], "]"}], "]"}], "]"}], "//", "N"}], ",", 
+     " ", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", " ", "2", ",", " ", "142"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"totalCV", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"meanTotalData", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "\[NotEqual]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"totalStdDev", "[", 
+         RowBox[{"[", "i", "]"}], "]"}], "/", 
+        RowBox[{"meanTotalData", "[", 
+         RowBox[{"[", "i", "]"}], "]"}]}], ",", "\"\<NaN\>\""}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "1", ",", "141"}], "}"}]}], "]"}]}], ";"}]}], "Input",\
+
+ CellChangeTimes->{{3.67777518105313*^9, 3.677775217431817*^9}, {
+  3.677777657233533*^9, 3.6777776573888283`*^9}, {3.6777776938027267`*^9, 
+  3.677777693878138*^9}, {3.677777847747117*^9, 3.677777848181868*^9}, {
+  3.6777778796189213`*^9, 3.6777778877005863`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"2\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.6777781692810717`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"2\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763.`\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.6777781693575277`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"3\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.6777781693583727`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during \
+this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.677778169359193*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"2\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.6777781693811703`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"2\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763.`\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.677778169404809*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"Part", "::", "partw"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Part \[NoBreak]\\!\\(\\*RowBox[{\\\"3\\\"}]\\)\[NoBreak] \
+of \[NoBreak]\\!\\(\\*RowBox[{\\\"{\\\", \\\"105763\\\", \\\"}\\\"}]\\)\
+\[NoBreak] does not exist. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/partw\\\", ButtonNote -> \
+\\\"Part::partw\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.677778169429695*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"General", "::", "stop"}], "MessageName"], 
+  RowBox[{
+  ":", " "}], "\<\"Further output of \
+\[NoBreak]\\!\\(\\*StyleBox[RowBox[{\\\"Part\\\", \\\"::\\\", \
+\\\"partw\\\"}], \\\"MessageName\\\"]\\)\[NoBreak] will be suppressed during \
+this calculation. \\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", \
+ButtonStyle->\\\"Link\\\", ButtonFrame->None, \
+ButtonData:>\\\"paclet:ref/message/General/stop\\\", ButtonNote -> \
+\\\"General::stop\\\"]\\)\"\>"}]], "Message", "MSG",
+ CellChangeTimes->{3.677778136667342*^9, 3.677778169453968*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"dataTable", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"labels", ",", "meanData", ",", "stdDev", ",", "cv"}], "}"}], "//",
+     "Transpose"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.677692495722725*^9, 3.677692535862311*^9}, {
+   3.677692693647766*^9, 3.6776927110583267`*^9}, 3.6776927551725903`*^9, {
+   3.677692914804057*^9, 3.6776929151583548`*^9}, {3.6777753044605227`*^9, 
+   3.6777753065683327`*^9}, {3.677775674808737*^9, 3.677775681836752*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"totalDataTable", "=", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "labels", ",", "meanTotalData", ",", "totalStdDev", ",", " ", 
+      "totalCV"}], "}"}], "//", "Transpose"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6777753145614033`*^9, 3.6777753402595997`*^9}, {
+  3.677775467556774*^9, 3.677775467741012*^9}, {3.677775688972323*^9, 
+  3.6777757084196863`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"dataTable", "//", "Dimensions"}], "\[IndentingNewLine]", 
+ RowBox[{"totalDataTable", "//", "Dimensions"}]}], "Input",
+ CellChangeTimes->{{3.677775474983696*^9, 3.677775590437883*^9}, {
+  3.677775694954533*^9, 3.677775698740992*^9}, {3.677775735707131*^9, 
+  3.6777757501133633`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"141", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{{3.677775476201179*^9, 3.677775593540999*^9}, {
+   3.677775701944119*^9, 3.677775750319545*^9}, 3.6777764319446697`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"141", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{{3.677775476201179*^9, 3.677775593540999*^9}, {
+   3.677775701944119*^9, 3.677775750319545*^9}, 3.677776431945737*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Table", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"i", "+", "1"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"dataTable", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", "4"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"totalDataTable", "[", 
+       RowBox[{"[", 
+        RowBox[{"i", ",", "4"}], "]"}], "]"}]}], "\[IndentingNewLine]", "}"}],
+     ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "1", ",", "141"}], "}"}]}], "\[IndentingNewLine]", 
+   "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"SortBy", "[", 
+  RowBox[{"%", ",", 
+   RowBox[{
+    RowBox[{"#", "[", 
+     RowBox[{"[", "2", "]"}], "]"}], "&"}]}], "]"}]}], "Input",
+ CellChangeTimes->{{3.677776434372497*^9, 3.677776532030612*^9}, {
+  3.677776615330714*^9, 3.677776630747653*^9}, {3.6777767308683863`*^9, 
+  3.677776780387479*^9}, {3.677776877598523*^9, 3.6777769231958647`*^9}, {
+  3.677777145219895*^9, 3.677777145422449*^9}, {3.677777204952025*^9, 
+  3.6777772221851273`*^9}, {3.677777268722828*^9, 3.677777314940908*^9}, {
+  3.677777347432486*^9, 3.6777773481636543`*^9}, {3.677777572440043*^9, 
+  3.6777775902757874`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "6.24918943122432`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "3"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"103", ",", 
+     RowBox[{"-", "1.429312698610384`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "103"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"100", ",", 
+     RowBox[{"-", "0.8682394972826656`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "100"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"136", ",", 
+     RowBox[{"-", "0.7149993332123944`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "136"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"110", ",", 
+     RowBox[{"-", "0.7138467345139723`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "110"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"141", ",", 
+     RowBox[{"-", "0.7119832978773433`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "141"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"132", ",", 
+     RowBox[{"-", "0.5812040448583229`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "132"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"91", ",", 
+     RowBox[{"-", "0.5542186285478115`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "91"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"85", ",", 
+     RowBox[{"-", "0.5442799704468504`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "85"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"134", ",", 
+     RowBox[{"-", "0.5203696887567193`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "134"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"22", ",", 
+     RowBox[{"-", "0.5184665989801605`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "22"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"99", ",", 
+     RowBox[{"-", "0.4660786941136345`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "99"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"11", ",", 
+     RowBox[{"-", "0.02652710824504595`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "11"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"17", ",", 
+     RowBox[{"-", "0.009702344406488055`"}], ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "17"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"20", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "20"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"26", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "26"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"28", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "28"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"30", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "30"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"32", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "32"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"34", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "34"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"36", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "36"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"38", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "38"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"40", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "40"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"42", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "42"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"44", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "44"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"46", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "46"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"48", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "48"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"50", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "50"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"51", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "51"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"52", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "52"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"55", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "55"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"57", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "57"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"59", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "59"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"61", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "61"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"63", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "63"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"65", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "65"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"67", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "67"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"70", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "70"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"72", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "72"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"74", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "74"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"76", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "76"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"78", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "78"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"79", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "79"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"80", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "80"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"83", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "83"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"115", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "115"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"116", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "116"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"117", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "117"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"118", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "118"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"119", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "119"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"120", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "120"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"121", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "121"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"122", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "122"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"128", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "128"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"130", ",", "0.`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "130"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"112", ",", "0.00213534237030861`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "112"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"12", ",", "0.006104531531396977`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "12"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"23", ",", "0.006181057778990063`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "23"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"104", ",", "0.007576023045793076`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "104"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", "0.012701692648661722`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "7"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"137", ",", "0.04221418774735088`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "137"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"139", ",", "0.04221418774735088`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "139"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"4", ",", "0.17116245738785887`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "4"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"114", ",", "0.23233654740227552`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "114"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"106", ",", "0.36811183505231027`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "106"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"123", ",", "0.43625925151330414`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "123"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"108", ",", "0.46075118233191587`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "108"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"105", ",", "0.4856383223719736`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "105"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"13", ",", "0.49534458324358205`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "13"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"24", ",", "0.49534458324358205`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "24"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"113", ",", "0.4964272048034143`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "113"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"109", ",", "0.4994930957054998`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "109"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "0.5017417771879417`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "2"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"111", ",", "0.5410916749827407`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "111"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", "0.5467614455313776`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "6"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "0.6380732417210198`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "5"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", "0.6540812377870198`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "9"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"138", ",", "0.7632698514598792`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "138"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"140", ",", "0.7632698514598792`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "140"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"107", ",", "0.8932861031642642`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "107"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"126", ",", "1.0322528421185728`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "126"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"101", ",", "1.4294423925205408`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "101"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"102", ",", "1.5034125357565182`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "102"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"125", ",", "1.6180878945450543`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "125"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"21", ",", "2.181780541985433`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "21"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"84", ",", "2.181853176418232`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "84"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"90", ",", "2.181891767651429`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "90"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"131", ",", "2.1915628917544985`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "131"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"135", ",", "2.34454762509019`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "135"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"88", ",", "2.4127532336374835`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "88"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"92", ",", "2.4164317524470604`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "92"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"97", ",", "2.4406373200059317`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "97"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"94", ",", "2.512052391921345`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "94"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"124", ",", "2.581023032619305`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "124"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"98", ",", "2.586347028696597`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "98"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"14", ",", "2.765863337187866`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "14"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"133", ",", "2.7699741153948234`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "133"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"86", ",", "3.0008849638840602`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "86"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"89", ",", "3.003626359279737`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "89"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"95", ",", "3.014524997870745`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "95"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"96", ",", "3.0375893099865117`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "96"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"87", ",", "3.493578282743301`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "87"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"93", ",", "3.7933256487017903`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "93"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"8", ",", "4.008764543363606`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "8"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"15", ",", "4.998999899979994`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "15"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"16", ",", "5.422435730165077`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "16"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"18", ",", "6.873281170034055`", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "18"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"10", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "10"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"19", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "19"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"25", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "25"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"27", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "27"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"29", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "29"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"31", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "31"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"33", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "33"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"35", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "35"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"37", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "37"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"39", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "39"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"41", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "41"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"43", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "43"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"45", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "45"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"47", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "47"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"49", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "49"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"53", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "53"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"54", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "54"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"56", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "56"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"58", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "58"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"60", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "60"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"62", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "62"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"64", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "64"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"66", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "66"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"68", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "68"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"69", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "69"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"71", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "71"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"73", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "73"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"75", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "75"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"77", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "77"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"81", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "81"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"82", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "82"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"127", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "127"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"129", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "129"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}], 
+   ",", 
+   RowBox[{"{", 
+    RowBox[{"142", ",", "\<\"NaN\"\>", ",", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Mean", "[", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"{", "105763.`", "}"}], "}"}], "\[LeftDoubleBracket]", 
+          RowBox[{"All", ",", "142"}], "\[RightDoubleBracket]"}], "]"}], 
+        "\[NotEqual]", "0"}], ",", 
+       FractionBox[
+        RowBox[{
+        "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+        RowBox[{
+        "meanTotalData", "\[LeftDoubleBracket]", "i", 
+         "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}]}], "}"}]}], 
+  "}"}]], "Output",
+ CellChangeTimes->{{3.677776462590767*^9, 3.677776535217155*^9}, 
+   3.677776633990909*^9, 3.677776771969955*^9, {3.677776894650618*^9, 
+   3.6777769265835743`*^9}, 3.677777148576264*^9, {3.677777212450577*^9, 
+   3.677777225161243*^9}, {3.677777278882814*^9, 3.6777773179593573`*^9}, 
+   3.677777348540311*^9, {3.677777580083555*^9, 3.6777775905446177`*^9}, {
+   3.677777671133259*^9, 3.67777771948151*^9}, 3.677777867195395*^9, 
+   3.6777779137798853`*^9, 3.677778181105588*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["totalCV"], "Input",
+ CellChangeTimes->{{3.6777778161872873`*^9, 3.677777817327745*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.3925072012312231`", ",", "0.8073356869784634`", ",", 
+   "0.5341397865504844`", ",", "0.5256657540587251`", ",", 
+   "0.5785090286230279`", ",", "0.015235187496199376`", ",", 
+   "2.548115996194139`", ",", "0.33269631355165097`", ",", 
+   "0.8815395507827876`", ",", 
+   RowBox[{"-", "0.05275250894966973`"}], ",", "0.03332292123523109`", ",", 
+   "5.790921511675382`", ",", "4.187725785702659`", ",", "9.850632109979594`",
+    ",", "13.32252656030823`", ",", 
+   RowBox[{"-", "0.03363606331713847`"}], ",", "14.062843377920922`", ",", 
+   "1.8923768240868593`", ",", 
+   RowBox[{"-", "0.595781241991405`"}], ",", "0.48272845173226725`", ",", 
+   RowBox[{"-", "2.2201994964566683`"}], ",", "1.008895598193981`", ",", 
+   RowBox[{"-", "1.050300966155157`"}], ",", "4.578443841243539`", ",", 
+   RowBox[{"-", "0.23022842198689622`"}], ",", "5.546481133929549`", ",", 
+   "10.398249009862363`", ",", "5.255176906218856`", ",", 
+   "246.03922250407933`", ",", "4.671375653613093`", ",", 
+   RowBox[{"-", "0.3196603153856684`"}], ",", "5.409677272976275`", ",", 
+   "7.5406113341601895`", ",", "8.520447687019217`", ",", 
+   RowBox[{"-", "5.631130579263731`"}], ",", "4.723738412198293`", ",", 
+   RowBox[{"-", "0.34547315735976036`"}], ",", "7.086105283129824`", ",", 
+   "244.30464660398926`", ",", "5.043356834047385`", ",", 
+   RowBox[{"-", "0.2803368552882536`"}], ",", "8.38031827401808`", ",", 
+   RowBox[{"-", "5.460474846197712`"}], ",", "5.067761500560426`", ",", 
+   RowBox[{"-", "0.2805149255495564`"}], ",", "9.717700116472518`", ",", 
+   "298.84686293073554`", ",", "11.99201675637308`", ",", 
+   RowBox[{"-", "6.587210180603145`"}], ",", 
+   RowBox[{"-", "0.21850229918359357`"}], ",", 
+   RowBox[{"-", "0.36705345114327403`"}], ",", "4.240729515216327`", ",", 
+   "4.914790251383365`", ",", 
+   RowBox[{"-", "0.7365535575375871`"}], ",", "1.9124195024220416`", ",", 
+   RowBox[{"-", "0.614188250649879`"}], ",", "2.354020563158081`", ",", 
+   "3.4117474470337177`", ",", "14.55210924502725`", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"9.453314804836315`*^-6", " ", 
+       RowBox[{"(", 
+        RowBox[{"7.607405147871121`*^20", "+", 
+         RowBox[{"19.`", " ", "\<\"Infinity\"\>"}]}], ")"}]}], "\[NotEqual]", 
+      "0"}], ",", 
+     FractionBox[
+      RowBox[{
+      "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      RowBox[{
+      "meanTotalData", "\[LeftDoubleBracket]", "i", 
+       "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}], ",", 
+   "2.064700831183622`", ",", 
+   RowBox[{"-", "0.9842829659786508`"}], ",", "2.3793161494043535`", ",", 
+   "2.870016262584473`", ",", "5.143564618698272`", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"9.453314804836315`*^-6", " ", 
+       RowBox[{"(", 
+        RowBox[{"4.358869841418463`*^19", "+", 
+         RowBox[{"20.`", " ", "\<\"Infinity\"\>"}]}], ")"}]}], "\[NotEqual]", 
+      "0"}], ",", 
+     FractionBox[
+      RowBox[{
+      "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      RowBox[{
+      "meanTotalData", "\[LeftDoubleBracket]", "i", 
+       "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}], ",", 
+   "2.2415624824092135`", ",", "2.0194088909035157`", ",", 
+   RowBox[{"-", "0.696140782688948`"}], ",", "5.630313566416672`", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"9.453314804836315`*^-6", " ", 
+       RowBox[{"(", 
+        RowBox[{"1.441132657458756`*^21", "+", 
+         RowBox[{"9.`", " ", "\<\"Infinity\"\>"}]}], ")"}]}], "\[NotEqual]", 
+      "0"}], ",", 
+     FractionBox[
+      RowBox[{
+      "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      RowBox[{
+      "meanTotalData", "\[LeftDoubleBracket]", "i", 
+       "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}], ",", 
+   "2.019932308054253`", ",", 
+   RowBox[{"-", "0.5882310538603148`"}], ",", "3.884827269569256`", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"9.453314804836315`*^-6", " ", 
+       RowBox[{"(", 
+        RowBox[{"4.003876786345189`*^27", "+", 
+         RowBox[{"6.`", " ", "\<\"Infinity\"\>"}]}], ")"}]}], "\[NotEqual]", 
+      "0"}], ",", 
+     FractionBox[
+      RowBox[{
+      "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      RowBox[{
+      "meanTotalData", "\[LeftDoubleBracket]", "i", 
+       "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}], ",", 
+   "5.681655372902835`", ",", 
+   RowBox[{"If", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"9.453314804836315`*^-6", " ", 
+       RowBox[{"(", 
+        RowBox[{"4.075665941996678`*^19", "+", 
+         RowBox[{"19.`", " ", "\<\"\"\>"}]}], ")"}]}], "\[NotEqual]", "0"}], 
+     ",", 
+     FractionBox[
+      RowBox[{
+      "totalStdDev", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+      RowBox[{
+      "meanTotalData", "\[LeftDoubleBracket]", "i", 
+       "\[RightDoubleBracket]"}]], ",", "\<\"NaN\"\>"}], "]"}], ",", 
+   RowBox[{"-", "0.5287643754523326`"}], ",", 
+   RowBox[{"-", "0.9244216051166255`"}], ",", "1.8496796321660771`", ",", 
+   "2.3404934801953137`", ",", "60.39331593901965`", ",", 
+   "0.48530149716639853`", ",", 
+   RowBox[{"-", "2.7506650241037747`"}], ",", "0.735935771188918`", ",", 
+   "1.4434704282784903`", ",", "11.166021950868863`", ",", 
+   "213.20075845960062`", ",", "0.4869997433566459`", ",", 
+   RowBox[{"-", "2.8571921623936785`"}], ",", "0.7127219453390404`", ",", 
+   "1.3751307537230353`", ",", "10.485298061815445`", ",", 
+   "324.8537242579563`", ",", "0.6462971689944682`", ",", 
+   "1.0721192462234668`", ",", "2.0339790550807924`", ",", 
+   RowBox[{"-", "2.058471734274393`"}], ",", 
+   RowBox[{"-", "7.894318690844909`"}], ",", "0.459282028613693`", ",", 
+   "0.7973845089167214`", ",", "16.533192359171462`", ",", 
+   "1.0133054539246478`", ",", 
+   RowBox[{"-", "1.156463106078724`"}], ",", "1.2133197014874975`", ",", 
+   "1.8842123100629768`", ",", "1.5163351736330997`", ",", 
+   "139.0211219404536`", ",", 
+   RowBox[{"-", "0.9899187543002268`"}], ",", 
+   RowBox[{"-", "2.2805894459571383`"}], ",", "0.9414789277726078`", ",", 
+   "1.2123770481626852`", ",", "27.802566796042694`", ",", 
+   "0.21840328236227452`", ",", "16.8969470910517`", ",", 
+   "0.21780862535211667`", ",", "10.253240059158104`", ",", 
+   "0.5229286760373112`", ",", "16.267007515301405`", ",", 
+   "0.5287071298358306`", ",", "3.6907972066257635`", ",", 
+   "2.025429786650639`", ",", "1.2042931755221375`", ",", 
+   "0.9838652085152644`", ",", "1.8890200411750455`", ",", 
+   "1.9231518588212058`", ",", 
+   RowBox[{"-", "0.5680612733091354`"}], ",", "1.931792019602965`", ",", 
+   RowBox[{"-", "0.6828280124260554`"}], ",", "0.4936195860482046`", ",", 
+   RowBox[{"-", "2.8903898040710554`"}], ",", "0.5215954384699093`", ",", 
+   RowBox[{"-", "5.595024463731473`"}], ",", "0.49663900168476083`", ",", 
+   RowBox[{"-", "11.231960184867564`"}], ",", "1.0460528849792823`", ",", 
+   RowBox[{"-", "1.3641032583399526`"}], ",", "0.11409631423799084`", ",", 
+   "1.3921233615740163`", ",", 
+   RowBox[{"-", "9.318040359319944`"}], ",", "11.056013638226382`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6777778175613413`*^9, 3.67777787359163*^9, 
+  3.677777921950837*^9}]
+}, Open  ]]
+},
+WindowSize->{1920, 1032},
+WindowMargins->{{Automatic, 0}, {Automatic, 0}},
+FrontEndVersion->"10.3 for Linux x86 (64-bit) (October 9, 2015)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 570, 15, 77, "Input"],
+Cell[1131, 37, 635, 14, 121, "Input"],
+Cell[1769, 53, 95, 1, 32, InheritFromParent],
+Cell[1867, 56, 972, 24, 165, "Input"],
+Cell[CellGroupData[{
+Cell[2864, 84, 2729, 60, 561, "Input"],
+Cell[5596, 146, 12035, 338, 249, "Output"],
+Cell[17634, 486, 1294, 27, 62, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18965, 518, 1887, 45, 385, "Input"],
+Cell[20855, 565, 10301, 296, 258, "Output"],
+Cell[31159, 863, 909, 21, 62, "Output"]
+}, Open  ]],
+Cell[32083, 887, 1937, 56, 99, "Input"],
+Cell[CellGroupData[{
+Cell[34045, 947, 1630, 47, 77, "Input"],
+Cell[35678, 996, 559, 11, 23, "Message"],
+Cell[36240, 1009, 561, 11, 23, "Message"],
+Cell[36804, 1022, 559, 11, 23, "Message"],
+Cell[37366, 1035, 582, 12, 23, "Message"],
+Cell[37951, 1049, 559, 11, 23, "Message"],
+Cell[38513, 1062, 559, 11, 23, "Message"],
+Cell[39075, 1075, 557, 11, 23, "Message"],
+Cell[39635, 1088, 582, 12, 23, "Message"]
+}, Open  ]],
+Cell[40232, 1103, 496, 10, 32, "Input"],
+Cell[40731, 1115, 405, 10, 32, "Input"],
+Cell[CellGroupData[{
+Cell[41161, 1129, 308, 5, 55, "Input"],
+Cell[41472, 1136, 215, 4, 31, "Output"],
+Cell[41690, 1142, 213, 4, 31, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[41940, 1151, 1242, 28, 209, "Input"],
+Cell[43185, 1181, 92326, 2561, 2529, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135548, 3747, 101, 1, 32, "Input"],
+Cell[135652, 3750, 7310, 151, 343, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
