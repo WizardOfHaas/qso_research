@@ -1,0 +1,9 @@
+data/*
+temp/*
+plots/*
+outputs/*
+confs/*
+
+*.pdf
+*.txt
+*.csv
