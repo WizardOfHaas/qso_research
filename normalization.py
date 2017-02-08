@@ -30,7 +30,7 @@ pp2= PdfPages('normalized_all_graph.pdf') #Set normalized output PDF file
 
 
 
-#######FUCKIN USE AN ACTUAL CONFIG FILE!!!!!
+#######USE AN ACTUAL CONFIG FILE!!!!!
 config_file = sys.argv[1] #Set cfg file path (csv with spec_name,z,snr...)
 config = loadtxt(config_file,
     delimiter = ",",
