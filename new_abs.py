@@ -51,7 +51,7 @@ for spec in config:
 	wavelength_NV_shifted = (z + 1) * (wavelength_NV_emit) #Shift NV
 	
 	#Load spectral file
-	norm_spec = loadtxt('/home/sean/qso_data/data/dr9_flux/norm/' + specname)
+	norm_spec = loadtxt('/home/sean/qso_data/data/dr9_flux/norm/' + specname + 'norm.DR9')
 
 	#Make everything a damned array...
 	wavelength = np.asarray(norm_spec[:,0])
@@ -108,7 +108,7 @@ for spec in config:
 						bal.append(i)
 
 			if len(bal) > 0:
-				for i in trough:
+				for i in bal:
 					ew += (1 - flux[i]) * abs(beta[i] - beta[i + 1])
 
 			#Find location(?) of possible peaks

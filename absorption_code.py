@@ -91,7 +91,7 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
     
         
     
-    normalized_dr9 =  loadtxt('/home/sean/qso_data/data/dr9_flux/norm/'+i) #Load in normalized spectrum
+    normalized_dr9 =  loadtxt('/home/sean/qso_data/data/dr9_flux/norm/'+i+'norm.DR9') #Load in normalized spectrum
     thousand=0
     
     wavelength = normalized_dr9[:,0] ###################wavelength
@@ -146,15 +146,20 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
 
     
     #maxvel and minvel are the limits, in velocity, where we want to find absorption and assume that they are SiIV
-    maxvel= 0.#original
+    maxvel= -25000.#original
     minvel=-60000#original
 
-    
-    
-    
-    fst=np.max(where (beta <= maxvel))#index value of the starting point (on the very left) -- index value of minvel
+    fst = 0
+
+    if beta.any():
+        try:
+            fst = np.max(where (beta <= maxvel))#index value of the starting point (on the very left) -- index value of minvel
+        except:
+            #fst = np.max(where (beta == maxvel))
+            fst = 0
+
     try:
-        lst=np.min(where(beta >=minvel))#index value of the ending point (on the very right) -- index value of maxvel
+        lst = np.min(where(beta >=minvel))#index value of the ending point (on the very right) -- index value of maxvel
     except:
         lst = where (beta == np.min(beta))
     

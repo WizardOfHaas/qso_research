@@ -11,11 +11,25 @@ from matplotlib.backends.backend_pdf import PdfPages
 pp=PdfPages('absorption_dr10_dr10.pdf')
 fig=figure()
 
-redshifts = loadtxt('zem_dr10.lst')
-redshifts_action = redshifts[:]
+#redshifts = loadtxt('zem_dr10.lst')
+#redshifts_action = redshifts[:]
 
-spectra = loadtxt('DR10.lst',dtype='str')
-spectra_action = spectra[:]
+#spectra = loadtxt('DR10.lst',dtype='str')
+#spectra_action = spectra[:]
+
+#######USE AN ACTUAL CONFIG FILE!!!!!
+config_file = sys.argv[1] #Set cfg file path (csv with spec_name,z,snr...)
+config = loadtxt(config_file,
+    delimiter = ",",
+    dtype={
+        'names': ('spec', 'z', 'snr'),
+        'formats': ('|S35', np.float, np.float)
+    })
+
+spectra_action = [row[0] for row in config]
+redshifts_action = [row[1] for row in config]
+snr_action = [row[2] for row in config]
+
 brac_all=[]
 deltav_all=[]
 thousand=[]
@@ -74,7 +88,7 @@ for i,j in zip (spectra_action, redshifts_action):
     
         
     
-    normalized_dr9 =  loadtxt(i+'norm.DR9')
+    normalized_dr9 =  loadtxt('/home/sean/qso_data/data/dr9_flux/norm/'+i+'norm.DR9')
     thousand=0
     
     wavelength = normalized_dr9[:,0] ###################  wavelength
