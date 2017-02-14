@@ -167,7 +167,7 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
     part=0
     bb=-1
     
-    countBI=1000 #this is the lower limit of how we are categorizing BALs, so if the width of an absorption feature is above 600, we are considering it to be a BAL
+    countBI=600 #this is the lower limit of how we are categorizing BALs, so if the width of an absorption feature is above 600, we are considering it to be a BAL
     
     jjj=arange (lst,fst)
     jjj=array(jjj)

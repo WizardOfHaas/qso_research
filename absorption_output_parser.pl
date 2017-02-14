@@ -43,7 +43,8 @@ for(my $i = 0; $i < scalar @data; $i++){
 		vmaxs => \@vmaxs,
 		BI_individual => \@BI_individual,
 		EW_individial => \@EW_individial,
-		depth => \@depth
+		depth => \@depth,
+		file => $name_raw
 	};
 
 	$collection->insert($final_data);
