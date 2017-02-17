@@ -146,7 +146,7 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
 
     
     #maxvel and minvel are the limits, in velocity, where we want to find absorption and assume that they are SiIV
-    maxvel= -25000.#original
+    maxvel= -30000.#original
     minvel=-60000#original
 
     fst = 0
@@ -167,7 +167,7 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
     part=0
     bb=-1
     
-    countBI=600 #this is the lower limit of how we are categorizing BALs, so if the width of an absorption feature is above 600, we are considering it to be a BAL
+    countBI=1000 #this is the lower limit of how we are categorizing BALs, so if the width of an absorption feature is above 600, we are considering it to be a BAL
     
     jjj=arange (lst,fst)
     jjj=array(jjj)
@@ -220,7 +220,7 @@ for i,j,snr in zip (spectra_action, redshifts_action, snr_action): #Iterate over
                 
                 C=1
                 
-                if beta[jjjs] < -3000 and beta[jjjs] >-30000:
+                if beta[jjjs] < maxvel and beta[jjjs] > minvel:
                     BI=(brac*C)*(deltav)
                     BI=round (BI,4)
                     BI_mid.append(BI)

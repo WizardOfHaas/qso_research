@@ -23,18 +23,18 @@ while(<$cfg_file>){
 	foreach my $entry (split(/<\/tr>/, $t[-2])){
 	my ($name) = $entry =~ /<\!\-\- Line Name \-\-><td class\="name">(.*)<\/td>/;
 	my ($wavelength) = $entry =~ /<\!\-\- Wavelength \-\-><td>(.*)<\/td>/;
-	my ($z) = $entry =~ /<\!\-\- linez \-\-><td>-(.*)<\/td>/;
+	my ($z) = $entry =~ /<\!\-\- linez \-\-><td>(.*)<\/td>/;
     my ($sigma) = $entry =~ /<\!\-\- linesigma \-\-><td>(.*)<\/td>/;
     my ($area) = $entry =~ /<\!\-\- linearea \-\-><td>(.*)<\/td>/;
     my ($contlevel) = $entry =~ /<\!\-\- linecontlevel \-\-><td>(.*)<\/td>/;
 
-		if($name && defined $z){
+		if($name){
 			#Convert wavelength to v, for refrence purposes.
 			my $CIV = 1549;
 			my $abs_z = ($wavelength/$CIV) - 1;
 			my $RC = (1 + $z)/(1 + $abs_z);
 			my $betaC = (($RC**2) - 1)/(($RC**2) + 1);
-			my $beta = $betaC * (-300000);
+			my $beta = $betaC * (-30000);
 
 			my $data = {
 				name => $name,
